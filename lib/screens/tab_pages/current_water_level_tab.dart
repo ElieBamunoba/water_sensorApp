@@ -3,7 +3,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:water_sensor/widgets/waveClipper.dart';
 
 class CurrentWaterLevelTab extends StatefulWidget {
-  CurrentWaterLevelTab({Key? key}) : super(key: key);
+  const CurrentWaterLevelTab({Key? key}) : super(key: key);
 
   @override
   State<CurrentWaterLevelTab> createState() => _CurrentWaterLevelTabState();
@@ -41,10 +41,11 @@ class _CurrentWaterLevelTabState extends State<CurrentWaterLevelTab> {
         ),
         GestureDetector(
           onTap: () {},
+          // ignore: avoid_unnecessary_containers
           child: Container(
             child: CircularPercentIndicator(
               radius: 90,
-              lineWidth: 10.0,
+              lineWidth: 12.0,
               percent: 0.79,
               center: const Text(
                 "80%",
@@ -52,8 +53,25 @@ class _CurrentWaterLevelTabState extends State<CurrentWaterLevelTab> {
               ),
               animation: true,
               animationDuration: 1500,
-              progressColor: Color(0xff1ca3ec),
+              progressColor: const Color(0xff1ca3ec),
             ),
+          ),
+        ),
+        const SizedBox(
+          height: 65,
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: const Text(
+            "water",
+            style: TextStyle(fontSize: 20),
+          ),
+          style: ElevatedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            minimumSize: const Size(150, 50),
+            maximumSize: const Size(200, 50),
+            elevation: 10,
           ),
         )
       ],

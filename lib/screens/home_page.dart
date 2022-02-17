@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water_sensor/screens/tab_pages/current_water_level_tab.dart';
 
-import '../widgets/waveClipper.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -38,7 +36,7 @@ class HomePage extends StatelessWidget {
         body: TabBarView(
           children: [
             CurrentWaterLevelTab(),
-            Icon(Icons.directions_transit, size: 350),
+            CurrentWaterLevelTab(),
             Icon(Icons.directions_car, size: 350),
           ],
         ),
