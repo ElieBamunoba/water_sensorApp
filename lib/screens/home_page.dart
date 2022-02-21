@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:water_sensor/screens/about_us_screen.dart';
 import 'package:water_sensor/screens/tab_pages/current_water_level_tab.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  void openAboutUspage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AboutUsPage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +28,7 @@ class HomePage extends StatelessWidget {
               itemBuilder: (_) => [
                 const PopupMenuItem(
                   child: Text("About Us"),
-                  onTap: null, //function to opern about us page,
+                  onTap: null,
                 ),
               ],
             )

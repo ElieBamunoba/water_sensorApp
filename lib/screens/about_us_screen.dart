@@ -5,6 +5,10 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("About us"),
+      ),
+    );
   }
 }

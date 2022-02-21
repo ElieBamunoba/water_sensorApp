@@ -6,7 +6,20 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: null,
+      child: Row(
+        children: [
+          Container(
+            child: null,
+          ),
+          Column(
+            children: [
+              const Text('Name: Elie Bamunoba'),
+              const Text('Role: Dev'),
+              const Text('Email: eliebamunoba@gmail.com'),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
