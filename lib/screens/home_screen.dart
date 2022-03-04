@@ -1,47 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:water_sensor/widgets/card_dashboard.dart';
 import 'package:water_sensor/widgets/waveClipper.dart';
 
-class CurrentWaterLevelTab extends StatefulWidget {
-  const CurrentWaterLevelTab({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<CurrentWaterLevelTab> createState() => _CurrentWaterLevelTabState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _CurrentWaterLevelTabState extends State<CurrentWaterLevelTab> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         // ignore: avoid_unnecessary_containers
-        Container(
-          child: Stack(
-            children: [
-              Opacity(
-                opacity: 0.45,
-                child: ClipPath(
-                  clipper: WaveClipper(),
-                  child: Container(
-                    color: const Color(0xff1ca3ec),
-                    height: 200,
-                  ),
-                ),
-              ),
-              ClipPath(
-                clipper: WaveClipper(),
-                child: Container(
-                  color: const Color(0xff1ca3ec),
-                  height: 180,
-                  alignment: Alignment.center,
-                ),
-              ),
-            ],
-          ),
+        Row(
+          children: [
+            CardDashboard(
+                title: "Today",
+                widget: const Icon(Icons.ac_unit_outlined),
+                text2: "Daily Average"),
+            CardDashboard(
+                title: "Today",
+                widget: const Icon(Icons.ac_unit_outlined),
+                text2: "Daily Average"),
+          ],
         ),
-        GestureDetector(
-          onTap: () {},
-          // ignore: avoid_unnecessary_containers
+        Center(
           child: Container(
             child: CircularPercentIndicator(
               radius: 90,

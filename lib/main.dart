@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:water_sensor/screens/home_page.dart';
+import 'package:water_sensor/screens/dashboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: DashboardScreen(),
     );
   }
 }
