@@ -28,6 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 text2: "Daily Average"),
           ],
         ),
+        Container(
+          margin: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8.0),
+          child: const Text("Current Value"),
+        ),
         Center(
           child: Container(
             child: CircularPercentIndicator(
