@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:water_sensor/widgets/card_dashboard.dart';
-import 'package:water_sensor/widgets/waveClipper.dart';
+import 'package:water_sensor/widgets/weather_card.dart';
+import '../widgets/waveClipper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,19 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        WeatherCard(),
         // ignore: avoid_unnecessary_containers
-        Row(
-          children: [
-            CardDashboard(
-                title: "Today",
-                widget: const Icon(Icons.ac_unit_outlined),
-                text2: "Daily Average"),
-            CardDashboard(
-                title: "Today",
-                widget: const Icon(Icons.ac_unit_outlined),
-                text2: "Daily Average"),
-          ],
-        ),
         Container(
           margin: EdgeInsets.all(20),
           padding: const EdgeInsets.all(8.0),
