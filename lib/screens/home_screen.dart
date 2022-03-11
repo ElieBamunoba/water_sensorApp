@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
               lineWidth: 12.0,
               percent: 0.79,
               center: const Text(
-                "80%",
+                "79%",
                 style: TextStyle(fontSize: 20),
               ),
               animation: true,

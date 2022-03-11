@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class WeatherCard extends StatelessWidget {
   @override
@@ -14,39 +15,46 @@ class WeatherCard extends StatelessWidget {
       elevation: 5,
       child: Container(
         width: mediaWidth * 90 / 100,
-        height: mediaHeight * 20 / 100,
+        height: mediaHeight * 25 / 100,
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: const EdgeInsets.only(top: 10),
               child: const Text(
                 "Athi River",
                 style: TextStyle(fontFamily: 'flutterfont'),
               ),
             ),
-            const Text("Tuesday, March 9"),
+            Text(
+              DateFormat('EEEE, d MMM, yyyy').format(DateTime.now()),
+            ),
             const Divider(
               height: 30,
+              color: Colors.black,
+              thickness: 0.680,
               endIndent: 20,
               indent: 20,
             ),
+            Text("Overcast clouds"),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Text("Overcast clouds"),
-                    Text("9 C"),
-                    Text("min:8 C / mac: 11 C"),
-                  ],
+                Text(
+                  "9 C",
+                  style: TextStyle(fontSize: 40),
                 ),
-                Column(
-                  children: [
-                    Icon(Icons.surfing_rounded),
-                    Text("widn 0.65 m/s")
-                  ],
+                const SizedBox(
+                  width: 20,
                 ),
+                Icon(
+                  Icons.wb_sunny_rounded,
+                  color: Colors.amberAccent[200],
+                  size: 45,
+                )
               ],
+            ),
+            Text(
+              "min:8 C / max: 11 C",
             )
           ],
         ),
