@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        WeatherCard(),
+        weatherCard(),
         // ignore: avoid_unnecessary_containers
         Container(
           margin: EdgeInsets.all(20),

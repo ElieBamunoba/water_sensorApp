@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:water_sensor/screens/dashboard_screen.dart';
+import 'package:water_sensor/screens/weather_screen.dart';
 
 void main() {
   runApp(
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue, 
       ),
-      home: DashboardScreen(),
+      home: WeatherScreen(),
     );
   }
 }

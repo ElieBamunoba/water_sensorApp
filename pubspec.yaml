@@ -38,6 +38,7 @@ dependencies:
   weather: ^2.0.1
   font_awesome_flutter: ^9.2.0
   intl: ^0.17.0
+  geolocator: ^8.2.0
 
 dev_dependencies:
   flutter_test:
