@@ -14,6 +14,7 @@ class WeatherScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           weatherCard(),
+          const Text("More Details"),
         ],
       ),
     );

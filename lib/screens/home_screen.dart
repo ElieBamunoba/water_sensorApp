@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:water_sensor/widgets/weather_card.dart';
-import '../widgets/waveClipper.dart';
+import '../route/route.dart' as route;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,7 +15,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        weatherCard(),
+        GestureDetector(
+          child: weatherCard(),
+          onTap: () => Navigator.pushNamed(context, route.weatherScreen),
+        ),
         // ignore: avoid_unnecessary_containers
         Container(
           margin: EdgeInsets.all(20),

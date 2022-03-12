@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:water_sensor/screens/dashboard_screen.dart';
-import 'package:water_sensor/screens/weather_screen.dart';
+import 'route/route.dart' as route;
 
 void main() {
   runApp(
@@ -18,9 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue, 
+        primarySwatch: Colors.blue,
       ),
-      home: WeatherScreen(),
+      onGenerateRoute: route.controller,
+      initialRoute: route.dashboardScreen,
     );
   }
 }
