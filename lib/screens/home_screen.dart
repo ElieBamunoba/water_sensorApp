@@ -13,52 +13,44 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          child: weatherCard(),
-          onTap: () => Navigator.pushNamed(context, route.weatherScreen),
-        ),
-        // ignore: avoid_unnecessary_containers
-        Container(
-          margin: EdgeInsets.all(20),
-          padding: const EdgeInsets.all(8.0),
-          child: const Text("Current Value"),
-        ),
-        Center(
-          child: Container(
-            child: CircularPercentIndicator(
-              radius: 90,
-              lineWidth: 12.0,
-              percent: 0.79,
-              center: const Text(
-                "79%",
-                style: TextStyle(fontSize: 20),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GestureDetector(
+            child: weatherCard(),
+            onTap: () => Navigator.pushNamed(context, route.weatherScreen),
+          ),
+          // ignore: avoid_unnecessary_containers
+
+          Center(
+            child: Container(
+              margin: const EdgeInsets.all(40),
+              child: CircularPercentIndicator(
+                radius: 100,
+                lineWidth: 15.0,
+                percent: 0.79,
+                center: Container(
+                  width: 70,
+                  height: 110,
+                  // color: Colors.amber,
+                  child: Image.asset(
+                    "assets/images/water.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+             curve: Curve.,
+                backgroundWidth: 12,
+                animation: true,
+                animationDuration: 1500,
+                progressColor: const Color(0xff1ca3ec),
               ),
-              animation: true,
-              animationDuration: 1500,
-              progressColor: const Color(0xff1ca3ec),
             ),
           ),
-        ),
-        const SizedBox(
-          height: 65,
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text(
-            "water",
-            style: TextStyle(fontSize: 20),
-          ),
-          style: ElevatedButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            minimumSize: const Size(150, 50),
-            maximumSize: const Size(200, 50),
-            elevation: 10,
-          ),
-        )
-      ],
+
+          const Text("WATER LEVEL"),
+          const Text("")
+        ],
+      ),
     );
   }
 }
