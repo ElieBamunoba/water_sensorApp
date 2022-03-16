@@ -13,15 +13,11 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 1;
   // ignore: deprecated_member_use
-  final List<Widget> _pages = [];
-  @override
-  void initState() {
-    _pages.add(StatisticsScreen());
-    _pages.add(HomeScreen());
-    _pages.add(SettingScreen());
-    super.initState();
-  }
-
+  final List<Widget> _pages = [
+    StatisticsScreen(),
+    HomeScreen(),
+    SettingScreen()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +46,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
               backgroundColor: Colors.blue,
               selectedItemColor: Colors.white,
               onTap: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
+                setState(
+                  () => _currentIndex = index,
+                );
               },
               // ignore: prefer_const_literals_to_create_immutables
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.assessment_outlined),
-                    label: 'Stastistics'),
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+                  icon: Icon(
+                    Icons.assessment_outlined,
+                  ),
+                  label: 'Stastistics',
+                ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.settings_outlined), label: 'Setting')
+                  icon: Icon(Icons.home),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings_outlined),
+                  label: 'Setting',
+                )
               ],
             ),
           ),
@@ -74,9 +78,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: FloatingActionButton(
           backgroundColor: _currentIndex == 1 ? Colors.blue : Colors.blueGrey,
           child: Icon(Icons.home),
-          onPressed: () => setState(() {
-            _currentIndex = 1;
-          }),
+          onPressed: () => setState(() => _currentIndex = 1),
         ),
       ),
     );

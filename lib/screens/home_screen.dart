@@ -21,32 +21,35 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () => Navigator.pushNamed(context, route.weatherScreen),
           ),
           // ignore: avoid_unnecessary_containers
-
-          Center(
-            child: Container(
-              margin: const EdgeInsets.all(40),
-              child: CircularPercentIndicator(
-                radius: 100,
-                lineWidth: 15.0,
-                percent: 0.79,
-                center: Container(
-                  width: 70,
-                  height: 110,
-                  // color: Colors.amber,
+          Container(
+            decoration: const BoxDecoration(
+              color: Color(0xFFA8DBF7),
+              shape: BoxShape.circle,
+            ),
+            margin: const EdgeInsets.all(40),
+            child: CircularPercentIndicator(
+              radius: 100,
+              lineWidth: 15.0,
+              //value
+              percent: 0.79,
+              center: Container(
+                width: 70,
+                height: 110,
+                // color: Colors.amber,
+                child: Center(
                   child: Image.asset(
                     "assets/images/water.png",
                     fit: BoxFit.fill,
                   ),
                 ),
-             curve: Curve.,
-                backgroundWidth: 12,
-                animation: true,
-                animationDuration: 1500,
-                progressColor: const Color(0xff1ca3ec),
               ),
+              backgroundWidth: 15,
+              animation: true,
+              animationDuration: 1500,
+              progressColor: const Color(0xff1ca3ec),
+              circularStrokeCap: CircularStrokeCap.round,
             ),
           ),
-
           const Text("WATER LEVEL"),
           const Text("")
         ],

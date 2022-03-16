@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:water_sensor/widgets/gradient_color.dart';
 
 Widget weatherCard() {
   return Card(
@@ -9,6 +10,7 @@ Widget weatherCard() {
     ),
     elevation: 5,
     child: Container(
+      decoration: gradient(),
       width: double.infinity,
       height: 200,
       child: Column(
