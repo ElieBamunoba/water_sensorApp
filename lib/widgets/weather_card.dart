@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:water_sensor/widgets/gradient_color.dart';
 
-Widget weatherCard() {
+Widget weatherCard({
+  required String cityName,
+  required String weather,
+  required double temperature,
+  required double min,
+  required double max,
+}) {
   return Card(
     margin: EdgeInsets.symmetric(
-      horizontal: 10,
-      vertical: 10,
+      horizontal: 15,
+      vertical: 15,
     ),
     elevation: 5,
     child: Container(
@@ -17,9 +23,8 @@ Widget weatherCard() {
         children: [
           Container(
             margin: const EdgeInsets.only(top: 10),
-            child: const Text(
-              "Athi River",
-              style: TextStyle(fontFamily: 'flutterfont'),
+            child: Text(
+              cityName,
             ),
           ),
           Text(
@@ -32,12 +37,12 @@ Widget weatherCard() {
             endIndent: 20,
             indent: 20,
           ),
-          Text("Overcast clouds"),
+          Text(weather),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "9 C",
+                "$temperature C ",
                 style: TextStyle(fontSize: 40),
               ),
               const SizedBox(
@@ -51,7 +56,7 @@ Widget weatherCard() {
             ],
           ),
           Text(
-            "min:8 C / max: 11 C",
+            "min: $min C / max: $max C",
           )
         ],
       ),

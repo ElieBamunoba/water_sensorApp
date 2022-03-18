@@ -5,7 +5,7 @@ Widget currentWeather(IconData icon, String temp, String location) {
   return Center(
     child: Column(
       children: [
-        weatherCard(),
+        // weatherCard(),
         Icon(
           icon,
           color: Colors.orange,

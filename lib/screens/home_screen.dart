@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:water_sensor/models/Weather.dart';
+import 'package:water_sensor/services/weather_api_client.dart';
 import 'package:water_sensor/widgets/weather_card.dart';
 import '../route/route.dart' as route;
 
@@ -17,7 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           GestureDetector(
-            child: weatherCard(),
+            child: weatherCard(
+              weather: "_weatherModel.weather",
+              cityName: "_weatherModel.cityName",
+              temperature: 10,
+              max: 10,
+              min: 10,
+            ),
             onTap: () => Navigator.pushNamed(context, route.weatherScreen),
           ),
           // ignore: avoid_unnecessary_containers
@@ -31,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               radius: 100,
               lineWidth: 15.0,
               //value
-              percent: 0.79,
+              percent: 0.45,
               center: Container(
                 width: 70,
                 height: 110,
