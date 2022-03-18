@@ -17,12 +17,12 @@ class WeatherApiClient {
     final response = await http.get(uri);
 
     final json = jsonDecode(response.body);
-    print(" city : ${Weather.fromJson(json).cityName}");
-    print("temp : ${Weather.fromJson(json).temperature}");
-    print("min : ${Weather.fromJson(json).min}");
-    print("max : ${Weather.fromJson(json).max}");
-    print("weather : ${Weather.fromJson(json).weather}");
-    print("icon : ${Weather.fromJson(json).icon}");
+    // print(" city : ${Weather.fromJson(json).cityName}");
+    // print("temp : ${Weather.fromJson(json).temperature}");
+    // print("min : ${Weather.fromJson(json).min}");
+    // print("max : ${Weather.fromJson(json).max}");
+    // print("weather : ${Weather.fromJson(json).weather}");
+    // print("icon : ${Weather.fromJson(json).icon}");
     return Weather.fromJson(json);
   }
 }
