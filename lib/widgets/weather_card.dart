@@ -8,9 +8,10 @@ Widget weatherCard({
   required double temperature,
   required double min,
   required double max,
+  required String icon,
 }) {
   return Card(
-    margin: EdgeInsets.symmetric(
+    margin: const EdgeInsets.symmetric(
       horizontal: 15,
       vertical: 15,
     ),
@@ -42,21 +43,17 @@ Widget weatherCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$temperature C ",
-                style: TextStyle(fontSize: 40),
+                "$temperature °C ",
+                style: const TextStyle(fontSize: 35),
               ),
               const SizedBox(
-                width: 20,
+                width: 5,
               ),
-              Icon(
-                Icons.wb_sunny_rounded,
-                color: Colors.amberAccent[200],
-                size: 45,
-              )
+              Image.network("http://openweathermap.org/img/wn/$icon.png")
             ],
           ),
           Text(
-            "min: $min C / max: $max C",
+            "min: $min °C / max: $max °C",
           )
         ],
       ),

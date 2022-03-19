@@ -11,13 +11,13 @@ class ProfileCard extends StatelessWidget {
           Container(
             child: null,
           ),
-          Column(
-            children: [
-              const Text('Name: Elie Bamunoba'),
-              const Text('Role: Dev'),
-              const Text('Email: eliebamunoba@gmail.com'),
-            ],
-          ),
+          // Column(
+          //   children: [
+          //     // const Text('Name: Elie Bamunoba'),
+          //     // const Text('Role: Dev'),
+          //     // const Text('Email: eliebamunoba@gmail.com'),
+          //   ],
+          // ),
         ],
       ),
     );

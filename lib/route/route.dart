@@ -11,7 +11,7 @@ const String weatherScreen = 'weather';
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case dashboardScreen:
-      return MaterialPageRoute(builder: (context) => DashboardScreen());
+      return MaterialPageRoute(builder: (context) => const DashboardScreen());
     case weatherScreen:
       return MaterialPageRoute(builder: (context) => const WeatherScreen());
     default:

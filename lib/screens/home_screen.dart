@@ -1,32 +1,81 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:water_sensor/models/Weather.dart';
-import 'package:water_sensor/services/weather_api_client.dart';
 import 'package:water_sensor/widgets/weather_card.dart';
-import '../route/route.dart' as route;
+import '../services/weather_api.dart';
+import '../widgets/gradient_color.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<WeatherModel> _weatherModel;
+  WeatherApi _weatherApi = WeatherApi();
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+    _weatherModel = _weatherApi.fetchWeather();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          GestureDetector(
-            child: weatherCard(
-              weather: "_weatherModel.weather",
-              cityName: "_weatherModel.cityName",
-              temperature: 10,
-              max: 10,
-              min: 10,
-            ),
-            onTap: () => Navigator.pushNamed(context, route.weatherScreen),
+          Center(
+            // child: GestureDetector(
+            child: FutureBuilder<WeatherModel>(
+                future: _weatherModel,
+                builder: (context, weather) {
+                  if (weather.hasData) {
+                    return weatherCard(
+                        weather: weather.data!.weather,
+                        cityName: weather.data!.cityName,
+                        temperature: weather.data!.temperature,
+                        max: weather.data!.max,
+                        min: weather.data!.min,
+                        icon: weather.data!.icon);
+                  } else if (weather.hasError) {
+                    return Text('${weather.error}');
+                  }
+                  return Stack(
+                    children: [
+                      Card(
+                        // ignore: prefer_const_constructors
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 15.0,
+                          vertical: 15,
+                        ),
+                        elevation: 5,
+                        child: Container(
+                          decoration: gradient(),
+                          width: double.infinity,
+                          height: 200,
+                          child: null,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 100),
+                        alignment: Alignment.center,
+                        child: const CircularProgressIndicator(
+                          strokeWidth: 5,
+                        ),
+                      ),
+                    ],
+                  );
+                  // By default, show a loading spinner.
+                }
+
+                // ) ,
+                // onTap: () => Navigator.pushNamed(context, route.weatherScreen),
+                ),
           ),
           // ignore: avoid_unnecessary_containers
           Container(
@@ -40,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
               lineWidth: 15.0,
               //value
               percent: 0.45,
+              // ignore: sized_box_for_whitespace
               center: Container(
                 width: 70,
                 height: 110,
@@ -59,7 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const Text("WATER LEVEL"),
-          const Text("")
         ],
       ),
     );
