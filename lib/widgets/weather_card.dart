@@ -43,7 +43,7 @@ Widget weatherCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$temperature °C ",
+                "$temperature°C ",
                 style: const TextStyle(fontSize: 35),
               ),
               const SizedBox(
@@ -53,7 +53,7 @@ Widget weatherCard({
             ],
           ),
           Text(
-            "min: $min °C / max: $max °C",
+            "min: $min°C / max: $max°C",
           )
         ],
       ),

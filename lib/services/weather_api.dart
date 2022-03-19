@@ -10,7 +10,7 @@ class WeatherApi with ChangeNotifier {
 
   Future<WeatherModel> fetchWeather() async {
     final queryParameters = {
-      'lat': '-1.439466',
+      'lat': '-1.4402995',
       'lon': '37.049710',
       'appid': 'c9fbc2e212b3edc3454df48bbdbd371b',
       'units': 'metric'
