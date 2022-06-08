@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:water_sensor/services/weather_api.dart';
 import 'home_Screen.dart';
 import 'settings_screen.dart';
 import 'statistics_screen.dart';
@@ -24,6 +26,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.read<WeatherApi>().fetchWeather;
+              },
+              icon: Icon(Icons.refresh))
+        ],
         title: Text('Dashboard'),
       ),
       body: _pages[_currentIndex],

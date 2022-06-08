@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:water_sensor/models/Weather.dart';
@@ -14,14 +12,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<WeatherModel> _weatherModel;
-  WeatherApi _weatherApi = WeatherApi();
-  @override
-  void initState() {
-    // ignore: todo
-    // TODO: implement initState
-    super.initState();
-    _weatherModel = _weatherApi.fetchWeather();
+  final WeatherApi _weatherApi = WeatherApi();
+  late WeatherModel data;
+  Future<void> getData() async {
+    data = await _weatherApi.fetchWeather();
   }
 
   @override
@@ -31,17 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Center(
             // child: GestureDetector(
-            child: FutureBuilder<WeatherModel>(
-                future: _weatherModel,
+            child: FutureBuilder(
+                future: getData(),
                 builder: (context, weather) {
-                  if (weather.hasData) {
+                  if (weather.connectionState == ConnectionState.done) {
                     return weatherCard(
-                        weather: weather.data!.weather,
-                        cityName: weather.data!.cityName,
-                        temperature: weather.data!.temperature,
-                        max: weather.data!.max,
-                        min: weather.data!.min,
-                        icon: weather.data!.icon);
+                      weather: data.weather,
+                      cityName: data.cityName,
+                      temperature: data.temperature,
+                      max: data.max,
+                      min: data.min,
+                      icon: data.icon,
+                    );
                   } else if (weather.hasError) {
                     return Text('${weather.error}');
                   }

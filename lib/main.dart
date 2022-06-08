@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:water_sensor/services/weather_api.dart';
 import 'route/route.dart' as route;
 
 void main() {
   runApp(
-    const MyApp(),
+    ChangeNotifierProvider(
+      create: (context) => WeatherApi(),
+      builder: (context, child) {
+        return const MyApp();
+      },
+    ),
   );
 }
 
