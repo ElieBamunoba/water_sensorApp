@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_sensor/services/weather_api.dart';
-import 'home_Screen.dart';
-import 'settings_screen.dart';
-import 'statistics_screen.dart';
+
+import 'home_page.dart';
+import 'settings_page.dart';
+import 'statistics_page.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -28,10 +29,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {
-                context.read<WeatherApi>().fetchWeather;
-              },
-              icon: Icon(Icons.refresh))
+            onPressed: () {
+              context.read<WeatherApi>().fetchWeather;
+            },
+            icon: Icon(Icons.refresh),
+          )
         ],
         title: Text('Dashboard'),
       ),
@@ -40,7 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         shape: CircularNotchedRectangle(),
         notchMargin: 8.0,
         clipBehavior: Clip.antiAlias,
-        child: Container(
+        child: SizedBox(
           height: kBottomNavigationBarHeight,
           child: Container(
             decoration: BoxDecoration(

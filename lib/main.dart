@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_sensor/services/weather_api.dart';
+import 'provider/water_provider.dart';
 import 'route/route.dart' as route;
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => WeatherApi(),
-      builder: (context, child) {
-        return const MyApp();
-      },
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DataClass()),
+        ChangeNotifierProvider(
+          create: (context) => WeatherApi(),
+        ),
+      ],
+      child: const MyApp(),
     ),
   );
 }

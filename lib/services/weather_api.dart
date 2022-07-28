@@ -44,14 +44,6 @@ class WeatherApi with ChangeNotifier {
     }
     notifyListeners();
 
-    // print("printed value");
-    // print("city : ${WeatherModel.fromJson(_weatherMap).cityName}");
-    // print("temp : ${WeatherModel.fromJson(_weatherMap).temperature}");
-    // print("min : ${WeatherModel.fromJson(_weatherMap).min}");
-    // print("max : ${WeatherModel.fromJson(_weatherMap).max}");
-    // print("weather : ${WeatherModel.fromJson(_weatherMap).weather}");
-    // print("icon : ${WeatherModel.fromJson(_weatherMap).icon}");
-
     return WeatherModel.fromJson(_weatherMap);
   }
 

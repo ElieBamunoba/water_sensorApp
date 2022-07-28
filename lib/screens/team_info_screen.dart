@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:water_sensor/services/weather_api.dart';
 import 'package:water_sensor/widgets/profile_card.dart';
 
 class TeamInfoScreen extends StatelessWidget {

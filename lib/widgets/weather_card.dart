@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:water_sensor/widgets/gradient_color.dart';
 
+import '../constants.dart';
+
 Widget weatherCard({
   required String cityName,
   required String weather,
@@ -26,10 +28,12 @@ Widget weatherCard({
             margin: const EdgeInsets.only(top: 10),
             child: Text(
               cityName,
+              style: kLabelTextStyle,
             ),
           ),
           Text(
             DateFormat('EEEE, d MMM, yyyy').format(DateTime.now()),
+            style: kLabelTextStyle,
           ),
           const Divider(
             height: 30,
@@ -38,7 +42,10 @@ Widget weatherCard({
             endIndent: 20,
             indent: 20,
           ),
-          Text(weather),
+          Text(
+            weather,
+            style: kLabelTextStyle,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -54,6 +61,7 @@ Widget weatherCard({
           ),
           Text(
             "min: $min°C / max: $max°C",
+            style: kLabelTextStyle,
           )
         ],
       ),
