@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:water_sensor/models/Weather.dart';
 import 'package:water_sensor/widgets/weather_card.dart';
-import '../constants.dart';
-import '../services/weather_api.dart';
-import '../widgets/gradient_color.dart';
+import '../../constants.dart';
+import '../../services/weather_api.dart';
+import '../../widgets/gradient_color.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class DashboardPage extends StatefulWidget {
+  const DashboardPage({Key? key}) : super(key: key);
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DashboardPage> createState() => _DashboardPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DashboardPageState extends State<DashboardPage> {
   final WeatherApi _weatherApi = WeatherApi();
   late WeatherModel data;
   Future<void> getData() async {
@@ -43,8 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Stack(
                   children: [
                     Card(
-                      // ignore: prefer_const_constructors
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 15.0,
                         vertical: 15,
                       ),
@@ -79,12 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
               radius: 100,
               lineWidth: 15.0,
               //value
-              percent: 0.45,
-              // ignore: sized_box_for_whitespace
-              center: Container(
+              percent: 0.5,
+              center: SizedBox(
                 width: 70,
                 height: 110,
-                // color: Colors.amber,
                 child: Center(
                   child: Image.asset(
                     "assets/images/water.png",

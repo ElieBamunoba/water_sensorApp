@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_sensor/services/weather_api.dart';
 
-import 'home_page.dart';
-import 'settings_page.dart';
-import 'statistics_page.dart';
+import 'pages/home_page.dart';
+import 'pages/wearther_page.dart';
+import 'pages/statistics_page.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -17,11 +17,19 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 1;
-  // ignore: deprecated_member_use
-  final List<Widget> _pages = [
-    StatisticsScreen(),
-    HomeScreen(),
-    SettingScreen()
+  final List<Map<String, Widget>> _pages = [
+    {
+      'page': StatisticsPage(),
+      'title': Text('Statistics'),
+    },
+    {
+      'page': DashboardPage(),
+      'title': Text('Dashboard'),
+    },
+    {
+      'page': WeatherDeatailPage(),
+      'title': Text('Weather'),
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,14 +38,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<WeatherApi>().fetchWeather;
+              setState(() {
+                context.read<WeatherApi>().fetchWeather.call();
+              });
             },
             icon: Icon(Icons.refresh),
           )
         ],
-        title: Text('Dashboard'),
+        title: _pages[_currentIndex]['title'],
       ),
-      body: _pages[_currentIndex],
+      body: _pages[_currentIndex]['page'],
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 8.0,
@@ -76,8 +86,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   label: '',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.settings_outlined),
-                  label: 'Setting',
+                  icon: Icon(Icons.cloud),
+                  label: 'Weather',
                 )
               ],
             ),
