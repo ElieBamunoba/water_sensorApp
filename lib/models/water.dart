@@ -1,12 +1,12 @@
-class Water {
-  String watering;
-  Water({
-    required this.watering,
+class WaterModel {
+  double moisture;
+  WaterModel({
+    required this.moisture,
   });
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data["f_name"] = watering;
-    return data;
+  //function to parse the JSON file into the model
+  factory WaterModel.fromJson(Map<String, dynamic> json) {
+    return WaterModel(
+      moisture: json["moisture"],
+    );
   }
 }

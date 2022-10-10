@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:water_sensor/models/Weather.dart';
 import 'package:water_sensor/widgets/weather_card.dart';
 import '../../constants.dart';
+import '../../models/water.dart';
+import '../../services/moisture_api.dart';
 import '../../services/weather_api.dart';
-import '../../widgets/gradient_color.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -15,8 +17,16 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   final WeatherApi _weatherApi = WeatherApi();
   late WeatherModel data;
+
+  final MoistureApi _moistureApi = MoistureApi();
+  late WaterModel moisture;
+
   Future<void> getData() async {
     data = await _weatherApi.fetchWeather();
+  }
+
+  Future<void> getMoisture() async {
+    moisture = await _moistureApi.fetchMoisture();
   }
 
   @override
@@ -24,6 +34,25 @@ class _DashboardPageState extends State<DashboardPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 10 / 100,
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TitleWidget(title: 'Dashboard'),
+                IconButton(
+                  onPressed: () {
+                    context.read<MoistureApi>().intitialValues();
+                    context.read<MoistureApi>().fetchMoisture();
+                    setState(() {});
+                  },
+                  icon: const Icon(Icons.refresh_rounded),
+                  style: IconButton.styleFrom(),
+                )
+              ],
+            ),
+          ),
           Center(
             child: FutureBuilder(
               future: getData(),
@@ -43,13 +72,26 @@ class _DashboardPageState extends State<DashboardPage> {
                 return Stack(
                   children: [
                     Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
                       margin: const EdgeInsets.symmetric(
                         horizontal: 15.0,
-                        vertical: 15,
+                        vertical: 10,
                       ),
                       elevation: 5,
                       child: Container(
-                        decoration: gradient(),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Palette.cardbackgroundColor,
+                              Palette.cardbackgroundColor2,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         width: double.infinity,
                         height: 200,
                         child: null,
@@ -60,6 +102,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       alignment: Alignment.center,
                       child: const CircularProgressIndicator(
                         strokeWidth: 5,
+                        color: Palette.greenColor,
                       ),
                     ),
                   ],
@@ -70,39 +113,79 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
           Container(
             decoration: const BoxDecoration(
-              color: Color(0xFFA8DBF7),
+              color: Palette.cardbackgroundColor,
               shape: BoxShape.circle,
             ),
             margin: const EdgeInsets.all(20),
-            child: CircularPercentIndicator(
-              radius: 100,
-              lineWidth: 15.0,
-              //value
-              percent: 0.5,
-              center: SizedBox(
-                width: 70,
-                height: 110,
-                child: Center(
-                  child: Image.asset(
-                    "assets/images/water.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              backgroundWidth: 15,
-              animation: true,
-              animationDuration: 1500,
-              progressColor: const Color(0xff1ca3ec),
-              circularStrokeCap: CircularStrokeCap.round,
+            child: FutureBuilder(
+              future: getMoisture(),
+              builder: (context, moistures) {
+                if (moistures.connectionState == ConnectionState.done) {
+                  double _moistureLevel;
+                  if (moisture.moisture < 0) {
+                    _moistureLevel = 0;
+                  } else {
+                    _moistureLevel = moisture.moisture / 100;
+                  }
+                  return CircularPercentIndicator(
+                    radius: 100,
+                    lineWidth: 15.0,
+                    //value
+                    percent: _moistureLevel,
+                    center: SizedBox(
+                      width: 70,
+                      height: 110,
+                      child: Center(child: Text("${_moistureLevel * 100} %")),
+                    ),
+                    backgroundWidth: 15,
+                    animation: true,
+                    animationDuration: 1500,
+                    progressColor: Palette.greenColor,
+                    circularStrokeCap: CircularStrokeCap.round,
+                  );
+                } else if (moistures.hasError) {
+                  return Text('${moistures.error}');
+                }
+                return Stack(
+                  children: [
+                    CircularPercentIndicator(
+                      radius: 100,
+                      lineWidth: 15.0,
+                      //value
+                      percent: 0,
+                      center: const SizedBox(
+                        width: 70,
+                        height: 110,
+                        child: Center(
+                          child: Text("0 %"),
+                        ),
+                      ),
+                      backgroundWidth: 15,
+                      animation: true,
+                      animationDuration: 1500,
+                      progressColor: Palette.greenColor,
+                      circularStrokeCap: CircularStrokeCap.round,
+                    ),
+                  ],
+                );
+                // By default, show a loading spinner.
+              },
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(
+            height: 10,
+          ),
           ElevatedButton(
-            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Palette.activeColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                fixedSize: const Size(150, 50)),
             child: const Text(
               'Water Now',
-              style: kLabelTextStyle,
             ),
+            onPressed: () {},
           ),
         ],
       ),

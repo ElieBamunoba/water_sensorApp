@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:water_sensor/services/weather_api.dart';
-import 'provider/water_provider.dart';
 import 'route/route.dart' as route;
+import 'services/moisture_api.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DataClass()),
+        ChangeNotifierProvider(
+          create: (context) => MoistureApi(),
+        ),
         ChangeNotifierProvider(
           create: (context) => WeatherApi(),
         ),
@@ -21,7 +23,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

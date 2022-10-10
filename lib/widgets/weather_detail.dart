@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:water_sensor/widgets/gradient_color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
 
@@ -19,7 +18,17 @@ Widget weatherCard({
     ),
     elevation: 5,
     child: Container(
-      decoration: gradient(),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.blue,
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
       width: double.infinity,
       height: 200,
       child: Column(
@@ -28,12 +37,12 @@ Widget weatherCard({
             margin: const EdgeInsets.only(top: 10),
             child: Text(
               cityName,
-              style: kLabelTextStyle,
+              style: GoogleFonts.actor(),
             ),
           ),
           Text(
             weather,
-            style: kLabelTextStyle,
+            style: GoogleFonts.actor(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +59,7 @@ Widget weatherCard({
           ),
           Text(
             "min: $min°C / max: $max°C",
-            style: kLabelTextStyle,
+            style: GoogleFonts.actor(),
           )
         ],
       ),
