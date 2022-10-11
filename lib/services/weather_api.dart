@@ -20,7 +20,7 @@ class WeatherApi with ChangeNotifier {
     final _queryParameters = {
       'lat': '-1.4402995',
       'lon': '37.049710',
-      'appid': 'c9fbc2e212b3edc3454df48bbdbd371b',
+      'appid': 'aee0ff2c3c13bf89a09b471b05a1ffaa',
       'units': 'metric'
     };
     final uri = Uri.https(

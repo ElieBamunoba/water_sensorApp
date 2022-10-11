@@ -8,8 +8,9 @@ Widget weatherCard({
   required String cityName,
   required String weather,
   required double temperature,
-  required double min,
-  required double max,
+  required int humidity,
+  required int pressure,
+  required double wind,
   required String icon,
 }) {
   return Card(
@@ -42,7 +43,9 @@ Widget weatherCard({
             children: [
               Text(
                 weather,
-                style: GoogleFonts.actor(),
+                style: GoogleFonts.actor(
+                  fontSize: 20,
+                ),
               ),
               Row(
                 children: [
@@ -65,24 +68,24 @@ Widget weatherCard({
                 children: [
                   Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Icon(Icons.water_drop_outlined),
-                        Text("59 %"),
-                        Text('Humidity'),
+                      children: [
+                        const Icon(Icons.water_drop_outlined),
+                        Text("$humidity %"),
+                        const Text('Humidity'),
                       ]),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Icon(Icons.wind_power_outlined),
-                        Text("59 %"),
-                        Text('Humidity'),
+                      children: [
+                        const Icon(Icons.air_outlined),
+                        Text("$wind m/s"),
+                        const Text('Wind'),
                       ]),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Icon(Icons.cloudy_snowing),
-                        Text("59 %"),
-                        Text('Humidity'),
+                      children: [
+                        const Icon(Icons.cloudy_snowing),
+                        Text("$pressure hPa"),
+                        const Text('Pressure'),
                       ])
                 ]),
           ),
@@ -90,12 +93,10 @@ Widget weatherCard({
             margin: const EdgeInsets.only(top: 10),
             child: Text(
               cityName,
-              style: GoogleFonts.actor(),
             ),
           ),
           Text(
             DateFormat('EEEE, d MMM, yyyy').format(DateTime.now()),
-            style: GoogleFonts.actor(),
           ),
         ],
       ),

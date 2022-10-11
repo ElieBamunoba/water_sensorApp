@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  static const Color iconColor = Color(0xFFB6C7D1);
-
   static const Color textColor1 = Color(0XFF92663B);
   static const Color textColor2 = Color(0XFF9BB3C0);
 
   static const Color backgroundColor = Color(0xFFECF3F9);
 
   static const Color greenColor = Color(0xFF1b9c73);
+  static const Color greenColor2 = Color(0xFF199970);
   static const Color activeColor = Color(0xFFe59a54);
+  static const Color card3 = Color(0xFFE0ECF0);
   static const Color cardbackgroundColor = Color(0xFFEceee6);
   static const Color cardbackgroundColor2 = Color(0xFFE6E4E0);
 }
@@ -21,8 +21,12 @@ Widget TitleWidget({required String title}) {
     child: Text(
       title,
       style: const TextStyle(
-        fontSize: 25,
+        // fontFamily: 'asset/font/Pangram-ExtraBold.otf',
         color: Palette.textColor1,
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Rubik',
+        fontStyle: FontStyle.normal,
       ),
     ),
   );

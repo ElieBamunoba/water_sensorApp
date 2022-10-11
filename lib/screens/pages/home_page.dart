@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'package:water_sensor/services/watering_api.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../services/watering_api.dart';
 import '../../models/Weather.dart';
 import '../../widgets/weather_card.dart';
 import '../../constants.dart';
@@ -65,9 +66,10 @@ class _DashboardPageState extends State<DashboardPage> {
                     weather: data.weather,
                     cityName: data.cityName,
                     temperature: data.temperature,
-                    max: data.max,
-                    min: data.min,
+                    wind: data.wind,
+                    humidity: data.humidity,
                     icon: data.icon,
+                    pressure: data.pressure,
                   );
                 } else if (weather.hasError) {
                   return Text('${weather.error}');
@@ -188,14 +190,26 @@ class _DashboardPageState extends State<DashboardPage> {
               'Water Now',
             ),
             onPressed: () {
-              if (_moistureLevel > 70) {
+              if ((_moistureLevel * 100) < 5) {
+                waterNow(data: false);
+                Fluttertoast.showToast(
+                  msg: 'Kindly check the sensor',
+                  toastLength: Toast.LENGTH_SHORT,
+                  backgroundColor: Palette.cardbackgroundColor,
+                  textColor: Palette.textColor1,
+                  fontSize: 15,
+                );
+              } else if ((_moistureLevel * 100) < 70) {
                 waterNow(data: true);
               } else {
+                waterNow(data: false);
                 Fluttertoast.showToast(
-                    gravity: ToastGravity.CENTER,
-                    msg: 'There is enough moisture in the soil',
-                    toastLength: Toast.LENGTH_LONG,
-                    fontSize: 20);
+                  msg: 'There is enough moisture in the soil',
+                  toastLength: Toast.LENGTH_SHORT,
+                  backgroundColor: Palette.cardbackgroundColor,
+                  textColor: Palette.textColor1,
+                  fontSize: 15,
+                );
               }
             },
           ),

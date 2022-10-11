@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:water_sensor/services/weather_api.dart';
 import 'route/route.dart' as route;
+
 import 'services/moisture_api.dart';
+import 'services/weather_api.dart';
 
 void main() {
   runApp(
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Water Sensor',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'Rubik',
       ),
       onGenerateRoute: route.controller,
       initialRoute: route.dashboardScreen,

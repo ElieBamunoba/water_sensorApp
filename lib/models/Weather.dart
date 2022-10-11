@@ -2,16 +2,18 @@ class WeatherModel {
   String cityName;
   String weather;
   double temperature;
-  double min;
-  double max;
+  int humidity;
+  int pressure;
+  double wind;
   String icon;
 
   WeatherModel({
+    required this.pressure,
     required this.cityName,
     required this.weather,
     required this.temperature,
-    required this.min,
-    required this.max,
+    required this.humidity,
+    required this.wind,
     required this.icon,
   });
 
@@ -21,8 +23,9 @@ class WeatherModel {
       cityName: json["name"],
       weather: json["weather"][0]["description"],
       temperature: json["main"]["temp"],
-      max: json["main"]["temp_max"],
-      min: json["main"]["temp_min"],
+      wind: json["wind"]["speed"],
+      humidity: json["main"]["humidity"],
+      pressure: json["main"]["pressure"],
       icon: json["weather"][0]["icon"],
     );
   }
