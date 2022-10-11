@@ -14,7 +14,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 1;
-  static const List<Widget> _pages = [
+  static List<Widget> _pages = [
     StatisticsPage(),
     DashboardPage(),
     WeatherDeatailPage(),

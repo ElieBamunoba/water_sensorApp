@@ -9,6 +9,9 @@ class Palette {
   static const Color greenColor = Color(0xFF1b9c73);
   static const Color greenColor2 = Color(0xFF199970);
   static const Color activeColor = Color(0xFFe59a54);
+  static const Color redshade = Color.fromARGB(0, 223, 111, 111);
+  static const Color blueshade = Color(0xff3387A1);
+  static const Color greenshade = Color(0xFF199970);
   static const Color card3 = Color(0xFFE0ECF0);
   static const Color cardbackgroundColor = Color(0xFFEceee6);
   static const Color cardbackgroundColor2 = Color(0xFFE6E4E0);

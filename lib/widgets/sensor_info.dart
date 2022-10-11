@@ -5,6 +5,7 @@ import '../constants.dart';
 Widget SensorInfo({
   required String title,
   required String amount,
+  required double width,
   required Color backgroundColor,
   required Color txtColor,
 }) {
@@ -14,8 +15,8 @@ Widget SensorInfo({
       color: backgroundColor,
       borderRadius: BorderRadius.circular(25),
     ),
-    width: 120,
-    height: 120,
+    width: width * 30 / 100,
+    height: width * 30 / 100,
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

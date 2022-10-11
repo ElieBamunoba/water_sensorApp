@@ -7,6 +7,7 @@ Widget NavigationCard({
   required IconData icon,
   required Color color,
   required Color txtColor,
+  required double width,
 }) {
   return InkWell(
     onTap: () {},
@@ -18,7 +19,7 @@ Widget NavigationCard({
         color: color,
         borderRadius: BorderRadius.circular(25),
       ),
-      width: 120,
+      width: width * 30 / 100,
       height: 50,
       child: Center(
         child: Row(
