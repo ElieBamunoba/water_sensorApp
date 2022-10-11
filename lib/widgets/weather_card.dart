@@ -20,7 +20,7 @@ Widget weatherCard({
       horizontal: 15,
       vertical: 10,
     ),
-    elevation: 5,
+    elevation: 2.5,
     child: Container(
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -48,8 +48,6 @@ Widget weatherCard({
                 children: [
                   Image.network(
                     "http://openweathermap.org/img/wn/$icon.png",
-                    height: 70,
-                    width: 70,
                   ),
                   Text(
                     "$temperature°C ",

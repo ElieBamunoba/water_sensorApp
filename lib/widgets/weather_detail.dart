@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../constants.dart';
-
 Widget weatherCard({
   required String cityName,
   required String weather,
@@ -14,7 +12,7 @@ Widget weatherCard({
   return Card(
     margin: const EdgeInsets.symmetric(
       horizontal: 15,
-      vertical: 15,
+      vertical: 10,
     ),
     elevation: 5,
     child: Container(
@@ -48,7 +46,7 @@ Widget weatherCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$temperature°C ",
+                "$temperature°C",
                 style: const TextStyle(fontSize: 35),
               ),
               const SizedBox(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'package:water_sensor/models/Weather.dart';
-import 'package:water_sensor/widgets/weather_card.dart';
+import 'package:water_sensor/services/watering_api.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../models/Weather.dart';
+import '../../widgets/weather_card.dart';
 import '../../constants.dart';
 import '../../models/water.dart';
 import '../../services/moisture_api.dart';
@@ -20,6 +22,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final MoistureApi _moistureApi = MoistureApi();
   late WaterModel moisture;
+  late double _moistureLevel;
 
   Future<void> getData() async {
     data = await _weatherApi.fetchWeather();
@@ -76,10 +79,10 @@ class _DashboardPageState extends State<DashboardPage> {
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                       margin: const EdgeInsets.symmetric(
-                        horizontal: 15.0,
+                        horizontal: 15,
                         vertical: 10,
                       ),
-                      elevation: 5,
+                      elevation: 2.5,
                       child: Container(
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
@@ -98,7 +101,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(vertical: 100),
+                      margin: const EdgeInsets.symmetric(vertical: 90),
                       alignment: Alignment.center,
                       child: const CircularProgressIndicator(
                         strokeWidth: 5,
@@ -121,7 +124,6 @@ class _DashboardPageState extends State<DashboardPage> {
               future: getMoisture(),
               builder: (context, moistures) {
                 if (moistures.connectionState == ConnectionState.done) {
-                  double _moistureLevel;
                   if (moisture.moisture < 0) {
                     _moistureLevel = 0;
                   } else {
@@ -185,7 +187,17 @@ class _DashboardPageState extends State<DashboardPage> {
             child: const Text(
               'Water Now',
             ),
-            onPressed: () {},
+            onPressed: () {
+              if (_moistureLevel > 70) {
+                waterNow(data: true);
+              } else {
+                Fluttertoast.showToast(
+                    gravity: ToastGravity.CENTER,
+                    msg: 'There is enough moisture in the soil',
+                    toastLength: Toast.LENGTH_LONG,
+                    fontSize: 20);
+              }
+            },
           ),
         ],
       ),

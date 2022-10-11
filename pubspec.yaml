@@ -41,6 +41,7 @@ dependencies:
   provider: ^6.0.2
   glass_kit: ^2.0.1
   google_fonts: ^3.0.1
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
