@@ -128,8 +128,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 if (moistures.connectionState == ConnectionState.done) {
                   if (moisture.moisture < 0) {
                     _moistureLevel = 0;
+                  } else if (moisture.moisture >= 100) {
+                    _moistureLevel = 1;
                   } else {
-                    _moistureLevel = moisture.moisture / 100;
+                    _moistureLevel = (moisture.moisture / 100);
                   }
                   return CircularPercentIndicator(
                     radius: 100,
@@ -139,7 +141,16 @@ class _DashboardPageState extends State<DashboardPage> {
                     center: SizedBox(
                       width: 70,
                       height: 110,
-                      child: Center(child: Text("${_moistureLevel * 100} %")),
+                      child: Center(
+                        child: Text(
+                          "${(_moistureLevel * 100).toStringAsFixed(1)} %",
+                          style: const TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 19,
+                            color: Palette.greenColor,
+                          ),
+                        ),
+                      ),
                     ),
                     backgroundWidth: 15,
                     animation: true,
@@ -161,7 +172,14 @@ class _DashboardPageState extends State<DashboardPage> {
                         width: 70,
                         height: 110,
                         child: Center(
-                          child: Text("0 %"),
+                          child: Text(
+                            "0 %",
+                            style: const TextStyle(
+                              fontFamily: 'Rubik',
+                              fontSize: 20,
+                              color: Palette.greenColor,
+                            ),
+                          ),
                         ),
                       ),
                       backgroundWidth: 15,
