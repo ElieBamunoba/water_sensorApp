@@ -1,6 +1,6 @@
 # water_sensor
 
-A Mobile application connect to an Moisture sensor to display the moisture level and trigger the watering process just by a click of a button.
+A Mobile application connected to a weather api and a moisture sensor to display the moisture level and trigger the watering process just by a click of a button.
 
 ## Getting Started
 
