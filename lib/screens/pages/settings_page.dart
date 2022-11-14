@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/getwidget.dart';
+import '../../route/route.dart' as route;
 
 import '../../constants/colors.dart';
 import '../../constants/theme_changer.dart';
@@ -83,9 +84,12 @@ class _WeatherDeatailPageState extends State<WeatherDeatailPage> {
               trailing: Icon(Icons.arrow_forward_ios_sharp),
             ),
             divider(),
-            const ListTile(
-              title: Text("About Us"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
+            InkWell(
+              onTap: () => Navigator.pushNamed(context, route.aboutUsScreen),
+              child: const ListTile(
+                title: Text("About Us"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
+              ),
             ),
             divider(),
           ],
