@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../constants.dart';
+import '../constants/colors.dart';
 
 Widget weatherCard({
   required String cityName,

@@ -43,6 +43,7 @@ dependencies:
   google_fonts: ^3.0.1
   fluttertoast: ^8.0.9
   syncfusion_flutter_charts: ^20.3.49
+  getwidget: ^3.0.1
 
 dev_dependencies:
   flutter_test:

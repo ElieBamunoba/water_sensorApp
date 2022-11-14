@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../constants/colors.dart';
 import 'pages/home_page.dart';
-import 'pages/wearther_page.dart';
+import 'pages/settings_page.dart';
 import 'pages/statistics_page.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -14,9 +14,9 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 1;
-  static List<Widget> _pages = [
+  static final List<Widget> _pages = [
     StatisticsPage(),
-    DashboardPage(),
+    const DashboardPage(),
     WeatherDeatailPage(),
   ];
   @override
@@ -67,8 +67,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     label: '',
                   ),
                   const BottomNavigationBarItem(
-                    icon: Icon(Icons.cloud),
-                    label: 'Weather',
+                    icon: Icon(Icons.settings),
+                    label: 'Settings',
                   )
                 ],
               ),

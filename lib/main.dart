@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'constants/theme_changer.dart';
 import 'route/route.dart' as route;
 
 import 'services/moisture_api.dart';
@@ -27,14 +28,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Water Sensor',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Rubik',
-      ),
-      onGenerateRoute: route.controller,
-      initialRoute: route.dashboardScreen,
-    );
+    return ThemeBuilder(
+        defaultBrightness: Brightness.light,
+        builder: (context, _brightness) {
+          return MaterialApp(
+            title: 'Water Sensor',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              fontFamily: 'Rubik',
+              brightness: _brightness,
+            ),
+            onGenerateRoute: route.controller,
+            initialRoute: route.dashboardScreen,
+          );
+        });
   }
 }

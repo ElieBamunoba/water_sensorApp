@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:water_sensor/widgets/sensor_info.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../constants.dart';
+import '../../constants/colors.dart';
 import '../../models/pie_graph.dart';
 import '../../widgets/navigation_card.dart';
 
 class StatisticsPage extends StatelessWidget {
+  const StatisticsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

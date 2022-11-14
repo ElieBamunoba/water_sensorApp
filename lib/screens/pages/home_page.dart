@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../services/watering_api.dart';
 import '../../models/Weather.dart';
 import '../../widgets/weather_card.dart';
-import '../../constants.dart';
+import '../../constants/colors.dart';
 import '../../models/water.dart';
 import '../../services/moisture_api.dart';
 import '../../services/weather_api.dart';
@@ -174,7 +174,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: Center(
                           child: Text(
                             "0 %",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: 'Rubik',
                               fontSize: 20,
                               color: Palette.greenColor,
