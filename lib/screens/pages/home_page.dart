@@ -30,6 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Future<void> getMoisture() async {
+    moisture = WaterModel(moisture: 0);
     moisture = await _moistureApi.fetchMoisture();
   }
 
