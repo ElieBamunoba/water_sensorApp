@@ -28,12 +28,7 @@ Widget SensorInfo({
               fontSize: 25,
             ),
           ),
-          Text(
-            title,
-            style: TextStyle(
-              color: txtColor,
-            ),
-          ),
+          Text(title, style: TextStyle(color: txtColor))
         ],
       ),
     ),

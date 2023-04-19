@@ -30,21 +30,19 @@ Widget ProfileCard({
             fit: BoxFit.cover,
           ),
         ),
-        Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text("Name: $name"),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Role: $role"),
-                  Text("Email: $email"),
-                ],
-              ),
-            ],
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text("Name: $name"),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Role: $role"),
+                Text("Email: $email"),
+              ],
+            ),
+          ],
         ),
       ],
     ),

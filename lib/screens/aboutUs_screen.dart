@@ -10,34 +10,51 @@ class AboutUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
+          title: const Text('Our Team',
+              style: TextStyle(fontSize: 30, color: Colors.black)),
+        ),
         body: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                margin: const EdgeInsets.all(10),
-                child: const Text('Team:', style: TextStyle(fontSize: 30)),
-              ),
+              Container(margin: const EdgeInsets.all(10)),
               ProfileCard(
-                name: 'Elie Bamunoba',
-                role: 'Mobile developer',
-                email: 'eliebamunoba@gmail.com',
-                imageUrl:
-                    'https://media-exp1.licdn.com/dms/image/C5603AQFp3UEt-A_vcg/profile-displayphoto-shrink_800_800/0/1647807033749?e=1674086400&v=beta&t=Y1ogvqlKlwqx67Eb7r9XBgpYS29psWJiiWGErTlI1VY',
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Palette.cardbackgroundColor,
-              ),
+                  name: 'Elie Bamunoba',
+                  role: 'Mobile developer',
+                  email: 'eliebamunoba@gmail.com',
+                  imageUrl:
+                      'https://media.licdn.com/dms/image/C5603AQFp3UEt-A_vcg/profile-displayphoto-shrink_200_200/0/1647807033749?e=1687392000&v=beta&t=3JHHEmroDP7NwSx0gCn8l9ILn-4ITghCPoRD5IBsiqo',
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Palette.cardbackgroundColor),
               ProfileCard(
-                name: 'Egesa Otema',
-                role: 'Back-End Developer',
-                email: 'wayneotema@gmail.com',
-                imageUrl:
-                    'https://avatars.githubusercontent.com/u/74417129?v=4',
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Palette.cardbackgroundColor,
-              ),
+                  name: 'Egesa Otema',
+                  role: 'Back-End Developer',
+                  email: 'wayneotema@gmail.com',
+                  imageUrl:
+                      'https://avatars.githubusercontent.com/u/74417129?v=4',
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Palette.cardbackgroundColor),
+              ProfileCard(
+                  name: 'Eric Muuo',
+                  role: 'IOT Developer',
+                  email: 'hearteric57@gmail.com',
+                  imageUrl:
+                      'https://media.licdn.com/dms/image/D4D03AQGOxEryUHaJOg/profile-displayphoto-shrink_200_200/0/1677606874957?e=1687392000&v=beta&t=0voMeOQDyYPrUEkKablJBQUyQMSlTbOZe5QAE64kzDc',
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Palette.cardbackgroundColor),
             ],
           ),
         ),
